@@ -3,7 +3,6 @@ package com.blockfinder.scanner;
 import com.blockfinder.BlockFinderClient;
 import net.minecraft.block.Block;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.world.Heightmap;
 import net.minecraft.util.math.BlockPos;
 
 import java.util.*;
@@ -58,9 +57,9 @@ public class BlockScanner {
         int maxX = center.getX() + radius;
         int minZ = center.getZ() - radius;
         int maxZ = center.getZ() + radius;
-        int minY = Math.max(client.world.getBottomY(), center.getY() - radius);
-        int worldTopY = client.world.getTopY(Heightmap.Type.WORLD_SURFACE, center.getX(), center.getZ()) - 1;
-        int maxY = Math.min(worldTopY, center.getY() + radius);
+        // Scan full vertical world range so surface players can still detect underground targets.
+        int minY = client.world.getBottomY();
+        int maxY = client.world.getTopYInclusive();
 
         BlockPos.Mutable mutable = new BlockPos.Mutable();
 

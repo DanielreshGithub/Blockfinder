@@ -9,6 +9,7 @@ import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.VertexRendering;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShapes;
 
 import java.util.Map;
@@ -28,6 +29,18 @@ public final class ESPRenderer {
 
         VertexConsumer lines = consumers.getBuffer(RenderLayers.lines());
         float lineWidth = Math.max(1.0f, BlockFinderClient.config.lineWidth);
+        double camX = 0.0;
+        double camY = 0.0;
+        double camZ = 0.0;
+
+        if (context.worldState() != null
+                && context.worldState().cameraRenderState != null
+                && context.worldState().cameraRenderState.pos != null) {
+            Vec3d camPos = context.worldState().cameraRenderState.pos;
+            camX = camPos.x;
+            camY = camPos.y;
+            camZ = camPos.z;
+        }
 
         for (Map.Entry<BlockPos, Block> entry : blocks.entrySet()) {
             BlockPos pos = entry.getKey();
@@ -38,9 +51,9 @@ public final class ESPRenderer {
                     context.matrices(),
                     lines,
                     VoxelShapes.fullCube(),
-                    pos.getX(),
-                    pos.getY(),
-                    pos.getZ(),
+                    pos.getX() - camX,
+                    pos.getY() - camY,
+                    pos.getZ() - camZ,
                     color,
                     lineWidth
             );
