@@ -1,0 +1,15 @@
+{
+  "key.blockfinder.toggle": "Toggle BlockFinder",
+  "key.blockfinder.config": "Open BlockFinder Config",
+  "key.category.blockfinder": "BlockFinder",
+  "key.categories.blockfinder.main": "BlockFinder",
+  "blockfinder.config.title": "BlockFinder Configuration",
+  "blockfinder.config.radius": "Scan Radius",
+  "blockfinder.config.ores": "Ores",
+  "blockfinder.config.containers": "Containers",
+  "blockfinder.config.spawners": "Spawners",
+  "blockfinder.config.custom": "Custom Blocks",
+  "blockfinder.hud.enabled": "BlockFinder: ON",
+  "blockfinder.hud.disabled": "BlockFinder: OFF",
+  "blockfinder.hud.found": "Found: %d blocks"
+}

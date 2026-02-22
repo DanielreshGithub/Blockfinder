@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "id": "blockfinder",
+  "version": "${version}",
+  "name": "BlockFinder",
+  "description": "Detect and highlight valuable blocks with ESP outlines. Configurable block list, color-coded highlights visible through walls, and an in-game HUD for block selection.",
+  "authors": ["BlockFinder Team"],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/blockfinder/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": ["com.blockfinder.BlockFinderClient"]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
