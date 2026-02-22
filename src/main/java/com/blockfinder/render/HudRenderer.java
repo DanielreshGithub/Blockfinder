@@ -25,8 +25,13 @@ public class HudRenderer {
             y += lineHeight;
 
             int totalCount = BlockFinderClient.scanner.getCount();
+            int requestedRadius = BlockFinderClient.config.scanRadius;
+            int effectiveRadius = BlockFinderClient.scanner.getEffectiveRadius();
+            String radiusText = requestedRadius == effectiveRadius
+                    ? ("r=" + requestedRadius)
+                    : ("r=" + requestedRadius + "->" + effectiveRadius);
             drawContext.drawTextWithShadow(textRenderer,
-                    "Found: " + totalCount + " blocks (r=" + BlockFinderClient.config.scanRadius + ")",
+                    "Found: " + totalCount + " blocks (" + radiusText + ")",
                     x, y, 0xAAAAAA);
             y += lineHeight;
 
