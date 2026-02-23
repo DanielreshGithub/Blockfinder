@@ -16,7 +16,7 @@ public class BlockScanner {
     private static final int SCAN_INTERVAL = 20; // ticks between full scans
     private static final int MOVE_THRESHOLD = 8; // blocks before rescan
     private static final int CHUNK_SIZE = 16;
-    private static final boolean CHUNK_LOCAL_MODE = true;
+    private static final boolean CHUNK_LOCAL_MODE = false;
     private static final int MAX_EFFECTIVE_RADIUS = 32;
     private static final int MAX_SCAN_BLOCKS = 750_000;
     private static final int MIN_SCAN_HEIGHT = 48;

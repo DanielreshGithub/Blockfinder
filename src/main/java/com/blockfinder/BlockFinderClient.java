@@ -4,6 +4,7 @@ import com.blockfinder.config.BlockFinderConfig;
 import com.blockfinder.config.ConfigScreen;
 import com.blockfinder.render.ESPRenderer;
 import com.blockfinder.render.HudRenderer;
+import com.blockfinder.render.ParticleHighlighter;
 import com.blockfinder.scanner.BlockScanner;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
@@ -56,7 +57,8 @@ public class BlockFinderClient implements ClientModInitializer {
         ));
 
         ClientTickEvents.END_CLIENT_TICK.register(this::onClientTick);
-        WorldRenderEvents.AFTER_ENTITIES.register(ESPRenderer::render);
+        WorldRenderEvents.BEFORE_DEBUG_RENDER.register(ESPRenderer::render);
+        WorldRenderEvents.END_MAIN.register(ESPRenderer::render);
         HudRenderCallback.EVENT.register(HudRenderer::render);
 
         LOGGER.info("BlockFinder initialized!");
@@ -86,6 +88,7 @@ public class BlockFinderClient implements ClientModInitializer {
 
         if (enabled && client.world != null && client.player != null) {
             scanner.tick(client);
+            ParticleHighlighter.tick(client);
         }
     }
 
